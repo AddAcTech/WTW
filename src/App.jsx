@@ -51,8 +51,8 @@ const App = () => {
   };
 
   return (
-    <div className="max-w-2xl mx-auto mt-8 p-4 bg-white border rounded shadow-lg transition-all ease-in-out">
-      <h1 className="text-3xl font-bold mb-4 text-center">
+    <div className="max-w-2xl mt-8 p-4 bg-white border rounded shadow-lg mx-4 md:mx-auto">
+      <h1 className="text-3xl font-bold mb-4 text-center text-[#48086f]">
         Actuarial Model Calculator
       </h1>
       <section className="flex flex-col gap-3">
@@ -112,7 +112,7 @@ const App = () => {
         </div>
 
         {showResults && (
-          <div className="mt-4">
+          <div className="mt-4 fade-in">
             <table className="w-full border-collapse border">
               <thead>
                 <tr>
@@ -139,7 +139,7 @@ const App = () => {
         )}
       </section>
       {isLoading && (
-        <div className="text-xl font-bold text-[#48086f] text-center mt-4">
+        <div className="fade-in text-xl font-bold text-[#48086f] text-center mt-4">
           Loading...
         </div>
       )}
