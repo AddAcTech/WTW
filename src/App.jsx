@@ -41,13 +41,26 @@ const App = () => {
     const numberOfResults = getRandomNumber(5, 20);
 
     // Mock de resultados de cálculo (reemplazar con la lógica real)
-    const results = Array.from({ length: numberOfResults }, (_, index) => ({
-      referenceDate: "22 Jan 2017",
-      benchmark1: getRandomNumber(10, 30), // Mock de valores aleatorios entre 10 y 30
-      benchmark2: getRandomNumber(10, 30),
-    }));
+    const results = Array.from({ length: numberOfResults }, (_, index) => {
+      // Generar una fecha aleatoria en un rango de días
+      const randomDays = getRandomNumber(1, 365);
+      const referenceDate = new Date();
+      referenceDate.setDate(referenceDate.getDate() - randomDays);
+
+      return {
+        referenceDate: formatDate(referenceDate), // Formatear la fecha
+        benchmark1: getRandomNumber(10, 30),
+        benchmark2: getRandomNumber(10, 30),
+      };
+    });
 
     setCalculationResults(results);
+  };
+
+  // Función para formatear la fecha en el formato deseado (ejemplo: "22 Jan 2017")
+  const formatDate = (date) => {
+    const options = { day: "2-digit", month: "short", year: "numeric" };
+    return date.toLocaleDateString("en-GB", options);
   };
 
   return (
